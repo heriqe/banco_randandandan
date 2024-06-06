@@ -3,26 +3,27 @@ from caixinha import Caixinha
 from cliente import Cliente
 
 class TesteCaixinha(unittest.TestCase):
-    def __init__(self, methodName: str = "runTest"):
-        super().__init__(methodName)
+
+    def setUp(self):
         self.__cliente = Cliente('John Doe', 25, 0)
 
     def test_get_nome(self):
         nome = 'Moto randandandan'
         caixinha = Caixinha(self.__cliente, nome, 100)
+        self.assertEqual(caixinha.get_nome(), nome)
 
-        self.assertTrue(caixinha.get_nome() == nome)
-
-    # Teste sem hardcoded mas com erro
     def test_depositar(self):
-        valor = 100
-        caixinha = Caixinha(self.__cliente, 'Carro', valor)
-        valor = valor + 200
+        valor_inicial = 100
+        valor_deposito = 200
+        caixinha = Caixinha(self.__cliente, 'Carro', valor_inicial)
+        caixinha.depositar(valor_deposito)
+        valor_esperado = valor_inicial + valor_deposito
+        self.assertEqual(caixinha.get_saldo(), valor_esperado)
 
-        self.assertTrue(caixinha.get_saldo() == valor)
-
-    # Teste de saque de 200 reais (valor hardcoded)
     def test_sacar(self):
-        caixinha = Caixinha(self.__cliente, 'Carro', 100)
+        caixinha = Caixinha(self.__cliente, 'Carro', 200)
+        caixinha.sacar(200)
+        self.assertEqual(caixinha.get_saldo(), 0)
 
-        self.assertTrue(caixinha.get_saldo() == 0)
+if __name__ == '__main__':
+    unittest.main()
