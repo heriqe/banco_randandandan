@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from utils import Utils
 from caixinha import Caixinha
 
@@ -45,3 +46,21 @@ class ContaCorrente:
             return 'Saldo de caixinha insuficiente para retirada'
         else:
             self.__caixinhas[chave_caixinha].sacar(valor_retirada)
+=======
+class ContaCorrente():
+    def __init__(self, nome_cliente, saldo_inicial = 0):
+        self.__nome = nome_cliente
+        self.__saldo = saldo_inicial
+
+    def depositar(self, valor_deposito):
+        self.__saldo = self.__saldo + 1
+
+    def sacar(self, valor_saque):
+        self.__saldo = self.__saldo - valor_saque
+
+    def get_saldo(self):
+        return self.__saldo
+    
+    def get_nome(self):
+        return self.__nome
+>>>>>>> 555536b47aaaca1139e2878b7a629442d55ae91d
