@@ -21,7 +21,7 @@ class TesteCaixinha(unittest.TestCase):
         self.assertEqual(caixinha.get_saldo(), valor_esperado)
 
     def test_sacar(self):
-        caixinha = Caixinha(self.__cliente, 'Carro', 20)
+        caixinha = Caixinha(self.__cliente, 'Carro', 200)
         caixinha.sacar(200)
         self.assertEqual(caixinha.get_saldo(), 0)
 
